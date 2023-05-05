@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text to Speech</title>
+  </head>
+  <body>
+    <label for="text-input">Enter text:</label>
+    <input type="text" id="text-input" />
+    <button id="submit-btn">Submit</button>
+
+    <script>
+        // Get references to the input field and submit button
+const textInput = document.getElementById("text-input");
+const submitBtn = document.getElementById("submit-btn");
+
+// Add a click event listener to the submit button
+submitBtn.addEventListener("click", () => {
+  // Get the input text from the text input field
+  const inputText = textInput.value;
+
+  // Create a new instance of SpeechSynthesisUtterance
+  const msg = new SpeechSynthesisUtterance();
+
+  // Set the text to be spoken
+  msg.text = inputText;
+
+  // Set the voice to use for the speech (optional)
+  msg.voice = window.speechSynthesis.getVoices()[0];
+
+  // Set the rate of speech (optional)
+  msg.rate = 0.5;
+
+  // Set the pitch of speech (optional)
+  msg.pitch = 0.5;
+
+  // Use the SpeechSynthesis interface to speak the text
+  window.speechSynthesis.speak(msg);
+});
+
+    </script>
+  </body>
+</html>
